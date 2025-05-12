@@ -4,6 +4,8 @@ A lightweight, animated background component for React apps that reacts to curso
 
 Perfect for landing pages, hero sections, or any spot you want to add subtle flair.
 
+![▶️Demo](./magnetic-grid-anim.gif)
+
 ---
 
 ## 📦 Install
