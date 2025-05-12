@@ -1,0 +1,16 @@
+
+src/
+node_modules/
+*.log
+
+
+tsconfig.json
+.vscode/
+.git
+.gitignore
+package-lock.json
+
+
+__tests__/
+*.test.ts
+*.spec.tsx

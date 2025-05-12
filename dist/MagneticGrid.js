@@ -1,5 +1,7 @@
-import { jsx as _jsx } from "react/jsx-runtime";
-import { useEffect, useRef } from "react";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
 const DEFAULT_GRID_SIZE = 50; // spacing between icons in px
 const ICON = "+";
 const DASH = "—";
@@ -10,13 +12,13 @@ const DEFAULT_FONT_BASE_SIZE = 24;
 const DEFAULT_FONT_COLOR = "#8ce1ff";
 const DEFAULT_BG_COLOR = "black";
 function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius = DEFAULT_ROW_RADIUS, colRadius = DEFAULT_COL_RADIUS, iconScale = DEFAULT_ICON_SCALE, fontBaseSize = DEFAULT_FONT_BASE_SIZE, fontColor = DEFAULT_FONT_COLOR, bgColor = DEFAULT_BG_COLOR, }) {
-    const canvasRef = useRef(null);
-    const mouseRef = useRef({ x: 0, y: 0 });
-    const positionsRef = useRef([]);
-    const angleMap = useRef(new Map());
-    const lastMouseRef = useRef({ x: 0, y: 0 });
-    const lastMoveTime = useRef(Date.now());
-    useEffect(() => {
+    const canvasRef = (0, react_1.useRef)(null);
+    const mouseRef = (0, react_1.useRef)({ x: 0, y: 0 });
+    const positionsRef = (0, react_1.useRef)([]);
+    const angleMap = (0, react_1.useRef)(new Map());
+    const lastMouseRef = (0, react_1.useRef)({ x: 0, y: 0 });
+    const lastMoveTime = (0, react_1.useRef)(Date.now());
+    (0, react_1.useEffect)(() => {
         const canvas = canvasRef.current;
         if (!canvas)
             return;
@@ -119,6 +121,6 @@ function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius = DEFAULT_ROW_RA
         fontColor,
         bgColor,
     ]);
-    return (_jsx("canvas", { ref: canvasRef, className: "fixed top-0 left-0 w-full h-full z-0" }));
+    return ((0, jsx_runtime_1.jsx)("canvas", { ref: canvasRef, className: "fixed top-0 left-0 w-full h-full z-0" }));
 }
-export default MagneticGrid;
+exports.default = MagneticGrid;
