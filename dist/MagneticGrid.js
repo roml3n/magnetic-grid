@@ -9,7 +9,7 @@ const DEFAULT_ICON_SCALE = 1.2;
 const DEFAULT_FONT_BASE_SIZE = 24;
 const DEFAULT_FONT_COLOR = "#8ce1ff";
 const DEFAULT_BG_COLOR = "black";
-export default function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius = DEFAULT_ROW_RADIUS, colRadius = DEFAULT_COL_RADIUS, iconScale = DEFAULT_ICON_SCALE, fontBaseSize = DEFAULT_FONT_BASE_SIZE, fontColor = DEFAULT_FONT_COLOR, bgColor = DEFAULT_BG_COLOR, }) {
+function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius = DEFAULT_ROW_RADIUS, colRadius = DEFAULT_COL_RADIUS, iconScale = DEFAULT_ICON_SCALE, fontBaseSize = DEFAULT_FONT_BASE_SIZE, fontColor = DEFAULT_FONT_COLOR, bgColor = DEFAULT_BG_COLOR, }) {
     const canvasRef = useRef(null);
     const mouseRef = useRef({ x: 0, y: 0 });
     const positionsRef = useRef([]);
@@ -18,7 +18,11 @@ export default function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius =
     const lastMoveTime = useRef(Date.now());
     useEffect(() => {
         const canvas = canvasRef.current;
+        if (!canvas)
+            return;
         const ctx = canvas.getContext("2d");
+        if (!ctx)
+            return;
         const updateCanvasSize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -27,7 +31,10 @@ export default function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius =
             const positions = [];
             for (let y = 0; y < rows; y++) {
                 for (let x = 0; x < cols; x++) {
-                    const pos = { x: x * gridSize + gridSize / 2, y: y * gridSize + gridSize / 2 };
+                    const pos = {
+                        x: x * gridSize + gridSize / 2,
+                        y: y * gridSize + gridSize / 2,
+                    };
                     positions.push(pos);
                     angleMap.current.set(`${pos.x},${pos.y}`, 0);
                 }
@@ -103,6 +110,15 @@ export default function MagneticGrid({ gridSize = DEFAULT_GRID_SIZE, rowRadius =
             window.removeEventListener("mousemove", handleMouseMove);
             window.removeEventListener("resize", updateCanvasSize);
         };
-    }, [gridSize, rowRadius, colRadius, iconScale, fontBaseSize, fontColor, bgColor]);
-    return _jsx("canvas", { ref: canvasRef, className: "fixed top-0 left-0 w-full h-full z-0" });
+    }, [
+        gridSize,
+        rowRadius,
+        colRadius,
+        iconScale,
+        fontBaseSize,
+        fontColor,
+        bgColor,
+    ]);
+    return (_jsx("canvas", { ref: canvasRef, className: "fixed top-0 left-0 w-full h-full z-0" }));
 }
+export default MagneticGrid;

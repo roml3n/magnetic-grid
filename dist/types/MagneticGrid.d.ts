@@ -7,4 +7,5 @@ export type MagneticGridProps = {
     fontColor?: string;
     bgColor?: string;
 };
-export default function MagneticGrid({ gridSize, rowRadius, colRadius, iconScale, fontBaseSize, fontColor, bgColor, }: MagneticGridProps): import("react/jsx-runtime").JSX.Element;
+declare function MagneticGrid({ gridSize, rowRadius, colRadius, iconScale, fontBaseSize, fontColor, bgColor, }: MagneticGridProps): import("react/jsx-runtime").JSX.Element;
+export default MagneticGrid;
