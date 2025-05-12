@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 
 const DEFAULT_GRID_SIZE = 50; // spacing between icons in px
 const ICON = "+";
