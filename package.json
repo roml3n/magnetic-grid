@@ -1,6 +1,6 @@
 {
   "name": "magnetic-grid",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/MagneticGrid.js",
 "types": "dist/types/MagneticGrid.d.ts",
   "scripts": {
